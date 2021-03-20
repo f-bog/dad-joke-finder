@@ -61,7 +61,7 @@ const StyledForm = styled.form`
     position: relative;
     z-index: 5;
     font-family: lato;
-    height: 50px;
+    height: 48px;
     width: 90%;
     max-width: 810px;
     padding-left: 1em;
@@ -71,6 +71,7 @@ const StyledForm = styled.form`
   .search-button-container {
     position: relative;
     display: flex;
+
     width: 100%;
   }
   .emoji {
