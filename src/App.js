@@ -7,7 +7,7 @@ import JokeList from './components/JokeList';
 import axios from 'axios';
 
 function App() {
-  const [searchTerm, setSearchTerm] = useState('food');
+  const [searchTerm, setSearchTerm] = useState('dog');
   const [jokes, setJokes] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [randomJoke, setRandomJoke] = useState(null);
