@@ -31,13 +31,12 @@ function App() {
       );
 
       setJokes(sortedResults);
-
       setIsLoading(false);
     };
 
-    setIsLoading(true);
     // prevents a bug caused by having searchTerm as a dependancy
     if (searchTerm !== '') {
+      setIsLoading(true);
       // set randomJoke to null
       setRandomJoke(null);
       fetchJokesByTerm(searchTerm);
