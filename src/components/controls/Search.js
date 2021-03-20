@@ -22,7 +22,7 @@ const Search = ({ setSearchTerm, randomJokeHandler }) => {
       <div className='search-button-container'>
         <input
           type='text'
-          placeholder='Search for a dad joke!'
+          placeholder='Search for a term!'
           value={value}
           onChange={e => setValue(e.target.value)}
         />
