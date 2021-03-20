@@ -112,7 +112,7 @@ const StyledContainer = styled.div`
     margin-bottom: 3em;
   }
   .info {
-    padding-left: 1.5em;
+    text-align: right;
     font-size: 0.9em;
     color: #333;
   }
