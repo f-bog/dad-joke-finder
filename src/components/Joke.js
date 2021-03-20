@@ -2,9 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 const Joke = ({ joke, searchTerm }) => {
   const jokeLength = joke.split(' ').length;
-  // const search = new RegExp(searchTerm, 'i');
-  // const formattedJoke = joke.replace(search, '<span>$&</span>');
-  // const format = console.log(format);
+
+  const search = new RegExp(searchTerm, 'i');
+  const formattedJoke = joke.replace(search, '<span>$&</span>');
+
   return (
     <StyledJoke>
       {/* // This probaby isn't a safe example? because the api might respond with a malicious script?
