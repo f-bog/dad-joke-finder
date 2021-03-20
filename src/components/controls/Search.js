@@ -10,8 +10,10 @@ const Search = ({ setSearchTerm, randomJokeHandler }) => {
 
   const searchHandler = e => {
     e.preventDefault();
-    setSearchTerm(value);
-    setValue('');
+    if (value !== '') {
+      setSearchTerm(value);
+      setValue('');
+    }
   };
 
   return (
