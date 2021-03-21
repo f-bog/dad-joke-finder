@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Joke from './Joke';
+
 const JokeList = ({ jokes, searchTerm, randomJoke }) => {
   return (
     <StyledList>

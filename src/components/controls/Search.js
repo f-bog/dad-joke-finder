@@ -53,7 +53,7 @@ const Search = ({ setSearchTerm, randomJokeHandler }) => {
 const StyledForm = styled.form`
   display: flex;
   margin-bottom: 2em;
-  height: 50px;
+  height: 48px;
   width: 100%;
   border-radius: 5px;
   box-shadow: 0px 3px 15px -5px rgba(194, 192, 194, 1);
