@@ -1,13 +1,16 @@
 import React from 'react';
+import { useSpring, animated } from 'react-spring';
 import styled from 'styled-components';
+
 const Joke = ({ joke, searchTerm }) => {
+  const props = useSpring({ opacity: 1, from: { opacity: 0 } });
   const jokeLength = joke.split(' ').length;
 
-  const search = new RegExp(searchTerm, 'i');
-  const formattedJoke = joke.replace(search, '<span>$&</span>');
+  // const search = new RegExp(searchTerm, 'i');
+  // const formattedJoke = joke.replace(search, '<span>$&</span>');
 
   return (
-    <StyledJoke>
+    <StyledJoke style={props}>
       {/* // This probaby isn't a safe example? because the api might respond with a malicious script?
       <p
         dangerouslySetInnerHTML={{ __html: formattedJoke }}
@@ -50,7 +53,7 @@ const Joke = ({ joke, searchTerm }) => {
   );
 };
 
-const StyledJoke = styled.div`
+const StyledJoke = styled(animated.div)`
   position: relative;
   display: block;
   min-height: 50px;
