@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import TermHighlighter from './TermHighlighter';
 
 const Joke = ({ joke, searchTerm }) => {
   const [copy, setCopy] = useState(false);
   const jokeLength = joke.split(' ').length;
 
-  // for other emphasising solution
-  // const search = new RegExp(searchTerm, 'i');
-  // const formattedJoke = joke.replace(search, '<span>$&</span>');
+  // const highlightWords = searchTerm => {
+  //   const search = new RegExp(searchTerm, 'i');
+  //   const formattedJoke = joke.replace(search, '<span>$&</span>');
+  // };
+
   const copyToClipBoard = () => {
     navigator.clipboard.writeText(joke);
     setCopy(true);
@@ -23,29 +26,16 @@ const Joke = ({ joke, searchTerm }) => {
         {copy ? 'Copied ' + String.fromCharCode(10003) : 'Copy?'}
       </span>
 
-      {/* // This probaby isn't a safe solution? because the api might respond with a malicious script?
+      {/* // This probaby isn't a safe solution? because the api might respond with a malicious script? 
+          // could use also sanitize this to make it safe.
       <p
-        dangerouslySetInnerHTML={{ __html: formattedJoke }}
+        dangerouslySetInnerHTML={{ __html: highlightWords(searchTerm) }}
         className='joke-text'
-      /> */}
+      />
+     */}
 
-      {/* safer example? */}
-      {searchTerm ? (
-        <p className='joke-text'>
-          {joke
-            .split(' ')
-            .map((word, index) =>
-              (searchTerm !== '') &
-              word.toLowerCase().includes(searchTerm.toLowerCase()) ? (
-                <span key={word + index}>{word}</span>
-              ) : (
-                ` ${word} `
-              )
-            )}
-        </p>
-      ) : (
-        <p className='joke-text'>{joke}</p>
-      )}
+      <TermHighlighter searchTerm={searchTerm}>{joke}</TermHighlighter>
+
       <span
         className='joke-length'
         style={{
@@ -103,7 +93,7 @@ const StyledJoke = styled.div`
   .joke-text {
     font-weight: 500;
     width: 70%;
-    span {
+    .highlight {
       border-radius: 5px;
       color: #eb7434;
       font-weight: 900;
