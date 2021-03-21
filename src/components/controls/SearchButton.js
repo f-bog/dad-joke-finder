@@ -5,8 +5,8 @@ const SearchButton = ({ searchHandler, set }) => {
     <StyledButton
       className='search-button'
       onClick={e => searchHandler(e)}
-      onMouseEnter={() => set({ y: -150, deg: 5 })}
-      onMouseLeave={() => set({ y: -50, deg: 0 })}
+      onMouseEnter={() => set({ y: -150, deg: 5, opacity: 1 })}
+      onMouseLeave={() => set({ y: -50, deg: 0, opacity: 0 })}
     >
       Search
     </StyledButton>
