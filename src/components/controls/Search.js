@@ -15,7 +15,7 @@ const Search = ({ setSearchTerm, randomJokeHandler }) => {
 
   const searchHandler = e => {
     e.preventDefault();
-    // if search value is not less than or equal to 1, do not run this code
+    // if search value is less than or equal to 1, do not run this code
     if (!(value.length <= 1)) {
       setSearchTerm(value.split(' ')[0]);
       setValue('');
