@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 const TermHighlighter = ({ children, searchTerm }) => {
   const words = children.split(new RegExp(`(${searchTerm})`, 'gi'));
+
   return (
     <StyledParagraph>
       {searchTerm
