@@ -105,11 +105,6 @@ const StyledForm = styled.form`
     input {
       font-size: 1em;
     }
-    .emoji {
-      ${'' /* .emoji-words {
-        display: none;
-      } */}
-    }
   }
 `;
 
