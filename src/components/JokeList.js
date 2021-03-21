@@ -15,12 +15,8 @@ const JokeList = ({ jokes, searchTerm, randomJoke }) => {
         <Joke joke={randomJoke.joke} />
       ) : (
         trail.map(({ ...rest }, index) => (
-          <animated.div style={{ ...rest }}>
-            <Joke
-              searchTerm={searchTerm}
-              joke={jokes[index].joke}
-              key={jokes[index].id}
-            />
+          <animated.div style={{ ...rest }} key={jokes[index].id}>
+            <Joke searchTerm={searchTerm} joke={jokes[index].joke} />
           </animated.div>
         ))
       )}
