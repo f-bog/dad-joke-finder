@@ -13,8 +13,8 @@ function App() {
   const [randomJoke, setRandomJoke] = useState(null);
 
   useEffect(() => {
+    // fetch jokes by term
     const fetchJokesByTerm = async searchTerm => {
-      // get response using searchTerm, and limit 30
       const response = await axios.get(
         `https://icanhazdadjoke.com/search?limit=30&term=${searchTerm}`,
         {
@@ -23,6 +23,7 @@ function App() {
           },
         }
       );
+
       const { data } = response;
 
       // sort jokes by length
@@ -42,7 +43,7 @@ function App() {
       fetchJokesByTerm(searchTerm);
     }
   }, [searchTerm]);
-
+  // Fetch random joke
   const fetchRandomJoke = async () => {
     const response = await axios.get('https://icanhazdadjoke.com/', {
       headers: {
@@ -74,10 +75,12 @@ function App() {
           setSearchTerm={setSearchTerm}
           randomJokeHandler={randomJokeHandler}
         />
-        <p className='info'>
-          Results: {randomJoke ? 1 : jokes.length} | Term:{' '}
-          {randomJoke ? '' : searchTerm}
-        </p>
+        {!isLoading && (
+          <p className='info'>
+            Results: {randomJoke ? 1 : jokes.length} | Term:{' '}
+            {randomJoke ? '' : searchTerm}
+          </p>
+        )}
         {!isLoading ? (
           <JokeList
             jokes={jokes}
