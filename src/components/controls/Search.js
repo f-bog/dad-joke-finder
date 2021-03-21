@@ -4,22 +4,27 @@ import emoji from '../../images/dad-emoji.png';
 import RandomJokeButton from './RandomJokeButton';
 import { useSpring, animated, interpolate } from 'react-spring';
 import SearchButton from './SearchButton';
+
 const Search = ({ setSearchTerm, randomJokeHandler }) => {
   const [value, setValue] = useState('');
-  const [{ y, deg }, set] = useSpring(() => ({ y: -50, deg: 0 }));
+  const [{ y, deg, opacity }, set] = useSpring(() => ({
+    y: -50,
+    deg: 0,
+    opacity: 0,
+  }));
 
   const searchHandler = e => {
     e.preventDefault();
     if (value !== '') {
-      setSearchTerm(value);
+      setSearchTerm(value.split(' ')[0]);
       setValue('');
     }
   };
 
   return (
     <StyledForm
-      onFocus={() => set({ y: -150, deg: 5 })}
-      onBlur={() => set({ y: -50, deg: 0 })}
+      onFocus={() => set({ y: -150, deg: 5, opacity: 1 })}
+      onBlur={() => set({ y: -50, deg: 0, opacity: 0 })}
     >
       <div className='search-button-container'>
         <input
@@ -38,9 +43,9 @@ const Search = ({ setSearchTerm, randomJokeHandler }) => {
             ),
           }}
         >
-          <span className='emoji-words'>
+          <animated.span className='emoji-words' style={{ opacity }}>
             oh boy i cant wait to embarrass my kids.
-          </span>
+          </animated.span>
           <img src={emoji} alt='dad emoji' />
         </animated.div>
         <SearchButton searchHandler={searchHandler} set={set} />
@@ -100,10 +105,9 @@ const StyledForm = styled.form`
       font-size: 1em;
     }
     .emoji {
-      width: 50px;
-      .emoji-words {
+      ${'' /* .emoji-words {
         display: none;
-      }
+      } */}
     }
   }
 `;
