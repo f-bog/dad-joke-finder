@@ -23,7 +23,7 @@ const Joke = ({ joke, searchTerm }) => {
   return (
     <StyledJoke onClick={copyToClipBoard}>
       <span className='copied-to-clipboard'>
-        {copy ? 'Copied ' + String.fromCharCode(10003) : 'Copy?'}
+        {copy ? 'Copied' + String.fromCharCode(10003) : 'Copy?'}
       </span>
 
       {/* // This probaby isn't a safe solution? because the api might respond with a malicious script? 
@@ -35,7 +35,6 @@ const Joke = ({ joke, searchTerm }) => {
      */}
 
       <TermHighlighter searchTerm={searchTerm}>{joke}</TermHighlighter>
-
       <span
         className='joke-length'
         style={{
