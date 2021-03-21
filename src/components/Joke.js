@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { useSpring, animated } from 'react-spring';
+
 const Joke = ({ joke, searchTerm }) => {
   const [copy, setCopy] = useState(false);
   const jokeLength = joke.split(' ').length;
@@ -19,11 +19,11 @@ const Joke = ({ joke, searchTerm }) => {
 
   return (
     <StyledJoke onClick={copyToClipBoard}>
-      <div className='copied-to-clipboard'>
-        <span>{copy ? 'Copied ' + String.fromCharCode(10003) : 'Copy?'}</span>
-      </div>
+      <span className='copied-to-clipboard'>
+        {copy ? 'Copied ' + String.fromCharCode(10003) : 'Copy?'}
+      </span>
 
-      {/* // This probaby isn't a safe example? because the api might respond with a malicious script?
+      {/* // This probaby isn't a safe solution? because the api might respond with a malicious script?
       <p
         dangerouslySetInnerHTML={{ __html: formattedJoke }}
         className='joke-text'
